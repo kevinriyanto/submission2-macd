@@ -37,7 +37,7 @@
  
 <script type="text/javascript">
     function processImage() {
-        var subscriptionKey = "53aafa0f1e5a4f2cadee68a2b1253fec";
+        var subscriptionKey = "9df2215e622e45b5889714bcbdfcf31e";
         var uriBase =
             "//southeastasia.api.cognitive.microsoft.com/vision/v2.0/analyze";
         var params = {
