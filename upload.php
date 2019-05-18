@@ -1,37 +1,3 @@
-<?php
-    echo 'asdasd';
-    require_once 'vendor/autoload.php';
-    require_once "./random_string.php";
-
-    use MicrosoftAzure\Storage\Blob\BlobRestProxy;
-    use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
-    use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
-    use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
-    use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
-    $connectionString = "DefaultEndpointsProtocol=https;AccountName=".getenv('ACCOUNT_NAME').";AccountKey=".getenv('ACCOUNT_KEY');
-
-    // Create blob client.
-    $blobClient = BlobRestProxy::createBlobService($connectionString);
-
-    $createContainerOptions = new CreateContainerOptions();
-    $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
-
-    // Set container metadata.
-    $createContainerOptions->addMetaData("key1", "value1");
-    $createContainerOptions->addMetaData("key2", "value2");
-    $containerName = "blockblobs".generateRandomString();
-    try{
-        $blobClient->createContainer($containerName, $createContainerOptions);
-        $fileToUpload = 'asd'.generateRandomString().$_FILES['fileToUpload']['name'];
-        //echo $fileToUpload;
-        $content = fopen($_FILES['fileToUpload']['tmp_name'].'', "r");
-        $blobClient->createBlockBlob($containerName,$fileToUpload,$content);
-
-        
-    }catch(ServiceException $e){
-        
-    }
-?>
 <!DOCTYPE html>
 <html>
 <head>
