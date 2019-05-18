@@ -38,7 +38,7 @@
     function processImage() {
         var subscriptionKey = "53aafa0f1e5a4f2cadee68a2b1253fec";
         var uriBase =
-            "https://centralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
+            "https://centralus.api.cognitive.microsoft.com/";
         var params = {
             "visualFeatures": "Categories,Description,Color",
             "details": "",
